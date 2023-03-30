@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title id="title"></title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <style>
+
+        @font-face {
+            font-family: "Sarasa Fixed Slab SC Xlight";
+            src: url("sarasa-fixed-slab-sc-extralight.ttf");
+        }
+
+        :root,
+        :root.light {
+            --body-color: #000000;
+            --body-background: #D0D0D0;
+            --boardcast-color: #808080;
+            --boardcast-hover: #C0C0C0;
+            --container-line: #000000;
+            --container-border: #404040;
+            --container-background-hover: #C0C0C0;
+        }
+
+        :root.black {
+            --body-color: #F0F0F0;
+            --body-background: #202020;
+            --boardcast-color: #808080;
+            --boardcast-hover: #404040;
+            --container-line: #D0D0D0;
+            --container-border: #404040;
+            --container-background-hover: #404040;
+        }
+
+        @media (prefers-color-scheme: light) {
+            body {
+                color: var(--body-color);
+                background: var(--body-background);
+            }
+
+            .notify > div {
+                border-top: var(--boardcast-color) dashed 1px;
+                border-bottom: var(--boardcast-color) dashed 1px;
+            }
+
+            .notify > div:hover {
+                background-color: var(--boardcast-hover);
+            }
+
+            .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(2) > div {
+                background: var(--container-line);
+            }
+
+            .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div > div {
+                border: solid var(--container-border) 1px;
+            }
+
+            .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div > div:hover {
+                background-color: var(--container-background-hover);
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                color: var(--body-color);
+                background: var(--body-background);
+            }
+
+            .notify > div {
+                border-top: var(--boardcast-color) dashed 1px;
+                border-bottom: var(--boardcast-color) dashed 1px;
+            }
+
+            .notify > div:hover {
+                background-color: var(--boardcast-hover);
+            }
+
+            .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(2) > div {
+                background: var(--container-line);
+            }
+
+            .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div > div {
+                border: solid var(--container-border) 1px;
+            }
+
+            .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div > div:hover {
+                background-color: var(--container-background-hover);
+            }
+        }
+
+        * {
+            font-size: 0;
+            font-family: "Sarasa Fixed Slab SC Xlight", serif;
+        }
+
+        body {
+            font-weight: lighter;
+            width: 100%;
+            min-width: 540px;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        body::-webkit-scrollbar {
+            width: 0 !important;
+        }
+
+        .banner {
+            /* BANNER FONT */
+            /*font-family: "Sarasa Fixed Slab SC Xlight", serif;*/
+            width: 100%;
+            height: 80px;
+            font-size: 40px;
+            line-height: 80px;
+            padding-left: 20px;
+            top: 0;
+            left: 0;
+            position: fixed;
+            color: #F0F0F0;
+            background: #000000;
+        }
+
+        .notify {
+            /* NOTIFY FONT */
+            /*font-family: "Sarasa Fixed Slab SC Xlight", serif;*/
+            width: 50%;
+            margin: 30px auto;
+        }
+
+        .notify > div {
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            margin-top: -1px;
+        }
+
+        .content {
+            width: max-content;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            height: max-content;
+        }
+
+        .content > div:nth-child(1) {
+            height: max-content;
+        }
+
+        .content > div:nth-child(1) > table {
+            height: max-content;
+            border-collapse: collapse;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+0) {
+            height: 20px;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) {
+            height: max-content;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(1) {
+            width: max-content;
+            height: max-content;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(1) > div {
+            /* BUTTON GROUP TITLE FONT */
+            /*font-family: "Sarasa Fixed Slab SC Xlight", serif;*/
+            font-size: 30px;
+            margin-right: 40px;
+            width: max-content;
+            min-width: max-content;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(2) {
+            height: max-content;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(2) > div {
+            width: 1px;
+            height: 100%;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) {
+
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div {
+            margin-left: 40px;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div > div {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            width: max-content;
+            border-radius: 2px;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div > div > span:nth-child(1) {
+            /* BUTTON TITLE FONT */
+            /*font-family: "Sarasa Fixed Slab SC Xlight", serif;*/
+            width: max-content;
+            display: block;
+            font-size: 24px;
+        }
+
+        .content > div:nth-child(1) > table tr:nth-child(2n+1) > td:nth-child(3) > div > div > span:nth-child(2) {
+            /* BUTTON SHORT FONT */
+            /*font-family: "Sarasa Fixed Slab SC Xlight", serif;*/
+            width: max-content;
+            display: block;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div style="height: 80px"></div>
+
+<div class="banner" id="wrapper-banner"></div>
+<div class="notify" id="wrapper-notify"></div>
+<div class="content" id="wrapper-content"></div>
+
+<div style="height: 80px"></div>
+
+</body>
+
+<script>
+
+    const buildButton = (parse) => {
+        let item;
+        if (parse['title'] === undefined) {
+            item = document.createElement('br');
+        } else {
+            item = document.createElement('div');
+            let itemTitle = document.createElement('span');
+            let itemShort = document.createElement('span');
+            itemTitle.innerText = parse['title'];
+            if (parse['short'] !== undefined) {
+                itemShort.innerText = parse['short'];
+            } else {
+                itemShort.innerText = ' ';
+            }
+            if (parse['url'] !== undefined) {
+                item.setAttribute('onclick', 'window.open(atob("' + btoa(parse['url']) + '"))');
+            }
+            console.info("build item " + parse['title'] + " / " + parse['short'] + " -> " + parse['url']);
+            item.appendChild(itemTitle);
+            item.appendChild(itemShort);
+        }
+        return item;
+    }
+
+    const buildGroup = (parse) => {
+        const title = parse['title'];
+        const menus = parse['menus'];
+        let item = document.createElement('tr');
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        let td3 = document.createElement('td');
+        let itemTitle = document.createElement('div');
+        let itemSplit = document.createElement('div');
+        let itemIndex = document.createElement('div');
+        itemTitle.innerText = title;
+        for (let i in menus) {
+            let it = menus[i];
+            let button = buildButton(it);
+            itemIndex.appendChild(button);
+        }
+        td1.appendChild(itemTitle);
+        td2.appendChild(itemSplit);
+        td3.appendChild(itemIndex);
+        item.appendChild(td1);
+        item.appendChild(td2);
+        item.appendChild(td3);
+        return item;
+    }
+
+    const loadContent = (parse) => {
+        let index = document.getElementById('wrapper-content');
+        index.innerHTML = null;
+        let div = document.createElement('div');
+        let table = document.createElement('table');
+        for (let i in parse) {
+            let it = parse[i];
+            let tr1 = buildGroup(it);
+            let tr2 = document.createElement('tr');
+            let td = document.createElement('tr');
+            tr2.appendChild(td);
+            table.appendChild(tr1);
+            table.appendChild(tr2);
+        }
+        div.appendChild(table);
+        index.appendChild(div);
+    };
+
+    const loadNotify = (parse) => {
+        let event = document.getElementById('wrapper-notify');
+        for (let i in parse) {
+            let it = parse[i];
+            let itemEvent = document.createElement('div');
+            itemEvent.innerText = it;
+            event.appendChild(itemEvent);
+        }
+    };
+
+    const loadBanner = (parse) => {
+        let title = document.getElementById('wrapper-banner');
+        title.innerText = parse;
+    };
+
+    const loadTitle = (parse) => {
+        document.title = parse;
+    };
+
+    const loadUrlContent = (url) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                const body = JSON.parse(this.responseText);
+                loadTitle(body['title']);
+                loadBanner(body['banner']);
+                loadNotify(body['notify']);
+                loadContent(body['content']);
+            }
+        };
+        xhr.open('GET', url);
+        xhr.send();
+    };
+
+    const loadInlineContent = (content) => {
+        loadTitle(content['title']);
+        loadBanner(content['banner']);
+        loadNotify(content['notify']);
+        loadContent(content['content']);
+    }
+
+    const changeToLight = () => {
+        document.documentElement.classList.remove("black");
+        document.documentElement.classList.add("light");
+    };
+
+    const changeToBlack = () => {
+        document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("black");
+    };
+
+    const isDarkScheme = () => {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+    };
+
+    const applySystemColor = () => {
+        if (isDarkScheme()) {
+            console.info("Apply color scheme to system prefer -> black");
+            changeToBlack();
+        } else {
+            console.info("Apply color scheme to system prefer -> light");
+            changeToLight();
+        }
+    };
+
+    const applyColor = () => {
+        let item = window.localStorage.getItem("mode");
+        switch (item) {
+            case "light":
+                changeToLight();
+                break;
+            case "black":
+                changeToBlack();
+                break;
+            case null:
+                applySystemColor();
+                break;
+        }
+    };
+
+
+    const onload = () => {
+        applyColor();
+        loadUrlContent('content.json');
+        // If you want every thing in single html, Change to this.
+        // loadInlineContent({});
+    };
+
+    window.onload = onload;
+
+    document.onkeyup = (event) => {
+        switch (event.key) {
+            case 'Delete':
+                window.localStorage.clear();
+                break;
+            case 'Shift':
+                let setting = window.localStorage.getItem("mode");
+                switch (setting) {
+                    case "light":
+                        changeToBlack();
+                        window.localStorage.setItem("mode", "black");
+                        break;
+                    case "black":
+                        changeToLight();
+                        window.localStorage.setItem("mode", "light");
+                        break;
+                    case null:
+                        let scheme = isDarkScheme();
+                        if (scheme) {
+                            changeToLight();
+                            window.localStorage.setItem("mode", "light");
+                        } else {
+                            changeToBlack();
+                            window.localStorage.setItem("mode", "black");
+                        }
+                        break;
+                }
+                break;
+        }
+    };
+
+</script>
+
+</html>
